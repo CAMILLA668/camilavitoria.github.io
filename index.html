@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===== SEO básico (somente informações fornecidas) ===== -->
+  <title>Camila Silva — Estudante de Desenvolvimento de Sistemas | Portfólio</title>
+  <meta name="description" content="Portfólio de Camila Silva, estudante de Desenvolvimento de Sistemas em Quatis (RJ), com foco em desenvolvimento web com Laravel. Projetos, tecnologias e contato." />
+  <meta name="author" content="Camila Silva" />
+  <meta name="theme-color" content="#ff5fae" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="Camila Silva — Portfólio" />
+  <meta property="og:description" content="Estudante de Desenvolvimento de Sistemas, focada em desenvolvimento web com Laravel e em busca de estágio como júnior." />
+  <!-- Para ter imagem ao compartilhar o link, adicione aqui uma meta og:image com a URL ABSOLUTA da sua foto
+       (ex.: https://SEU-USUARIO.github.io/SEU-REPOSITORIO/assets/images/perfil.jpg). Veja o README. -->
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+
+  <!-- Fontes: títulos pixelados + rótulos retrô + texto legível -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- Marca que o JS está ativo (as animações de entrada só escondem conteúdo quando há JS) -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Tailwind CSS v3 via CDN (site estático, sem build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#3a2447',
+            pink: { DEFAULT: '#ff5fae', soft: '#ffe3f1', mid: '#ff9ccd', dark: '#b3166a' },
+            mint: { DEFAULT: '#c9f5dc', deep: '#3ecf8e', dark: '#1d7448' },
+            lilac: { DEFAULT: '#d9c8ff', dark: '#6a45c2' }
+          },
+          fontFamily: {
+            pixel: ['"Press Start 2P"', 'monospace'],
+            retro: ['VT323', 'monospace'],
+            body: ['Nunito', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            pixel: '4px 4px 0 0 #3a2447',
+            'pixel-lg': '6px 6px 0 0 #3a2447'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Estilos complementares (animações, janelas, fundo, cursor...) -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="font-body text-ink antialiased">
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+  <!-- Fundo animado: o JS cria pequenos corações, estrelas e flores aqui -->
+  <div id="bg-deco" class="bg-deco" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       HEADER / NAVEGAÇÃO (barra de tarefas retrô)
+       ============================================================ -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b-[3px] border-ink bg-white">
+    <div class="taskbar-strip" aria-hidden="true"></div>
+    <div class="mx-auto flex h-14 max-w-6xl items-center justify-between gap-3 px-4">
+      <a href="#inicio" class="px-btn px-btn-sm" aria-label="Camila Silva — voltar ao início">
+        <span class="px-ico ico-flower" aria-hidden="true"></span>
+        <span>camila.exe</span>
+      </a>
+
+      <!-- Navegação desktop -->
+      <nav class="hidden lg:block" aria-label="Navegação principal">
+        <ul class="flex items-center gap-1">
+          <li><a class="nav-link" href="#inicio">Início</a></li>
+          <li><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li><a class="nav-link" href="#tecnologias">Tecnologias</a></li>
+          <li><a class="nav-link" href="#projetos">Projetos</a></li>
+          <li><a class="nav-link" href="#experiencia">Experiência</a></li>
+          <li><a class="nav-link" href="#formacao">Formação</a></li>
+          <li><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <!-- Relógio decorativo -->
+        <span id="clock" class="hidden border-[3px] border-ink bg-mint px-2 font-retro text-xl leading-7 xl:block" aria-hidden="true">00:00</span>
+
+        <!-- Botão do menu mobile -->
+        <button id="menu-toggle" type="button" class="px-btn px-btn-sm lg:hidden" aria-expanded="false" aria-controls="mobile-menu">
+          <span aria-hidden="true">☰</span> Menu
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile (estilo menu iniciar) -->
+    <nav id="mobile-menu" class="mobile-menu hidden lg:hidden" aria-label="Navegação principal (celular)">
+      <ul class="mx-auto flex max-w-6xl flex-col px-4 py-2">
+        <li><a class="mobile-link" href="#inicio">Início</a></li>
+        <li><a class="mobile-link" href="#sobre">Sobre</a></li>
+        <li><a class="mobile-link" href="#tecnologias">Tecnologias</a></li>
+        <li><a class="mobile-link" href="#projetos">Projetos</a></li>
+        <li><a class="mobile-link" href="#experiencia">Experiência</a></li>
+        <li><a class="mobile-link" href="#formacao">Formação</a></li>
+        <li><a class="mobile-link" href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="relative z-10">
+
+    <!-- ============================================================
+         HERO / APRESENTAÇÃO INICIAL
+         ============================================================ -->
+    <section id="inicio" class="relative mx-auto max-w-6xl px-4 pb-16 pt-28 sm:pt-32" aria-labelledby="hero-title">
+
+      <!-- Sprites decorativos que reagem ao cursor -->
+      <span class="parallax pointer-events-none absolute left-2 top-24 hidden sm:block" data-depth="14" aria-hidden="true"><span class="px-ico ico-star float block h-8 w-8"></span></span>
+      <span class="parallax pointer-events-none absolute right-6 top-28 hidden sm:block" data-depth="-18" aria-hidden="true"><span class="px-ico ico-heart float-slow block h-8 w-9"></span></span>
+      <span class="parallax pointer-events-none absolute bottom-6 left-[46%] hidden md:block" data-depth="10" aria-hidden="true"><span class="px-ico ico-flower float block h-9 w-9"></span></span>
+
+      <div class="grid items-center gap-10 lg:grid-cols-[1.25fr_.75fr]">
+
+        <!-- Janela principal de boas-vindas -->
+        <article class="win" data-window data-reveal="pop">
+          <div class="win-bar">
+            <span class="win-title"><span class="px-ico ico-star-w" aria-hidden="true"></span>bem-vinda.exe</span>
+            <span class="win-ctrls">
+              <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela bem-vinda.exe" aria-expanded="true">_</button>
+              <button type="button" class="win-btn" data-win-close aria-label="Fechar janela bem-vinda.exe">x</button>
+            </span>
+          </div>
+          <div class="win-body">
+            <p class="mb-3 font-retro text-2xl text-pink-dark">&gt; olá, mundo! <span class="blink" aria-hidden="true">▌</span></p>
+            <h1 id="hero-title" class="font-pixel text-[1.05rem] leading-[1.9] sm:text-2xl sm:leading-[1.8] lg:text-[1.9rem]">
+              Oi, eu sou a <span class="hl-pink">Camila Silva</span>
+            </h1>
+            <p class="mt-4 font-pixel text-[0.62rem] leading-[2] text-lilac-dark sm:text-xs">
+              Desenvolvedora Web Júnior em Formação
+            </p>
+            <p class="mt-4 max-w-xl text-base leading-relaxed sm:text-lg">
+              Estudante de desenvolvimento de sistemas com foco em <strong>php, laravel</strong> e <strong>aplições web</strong>
+            </p>
+
+            <ul class="mt-5 flex flex-wrap gap-2" aria-label="Resumo">
+              <li class="badge bg-pink-soft">24 anos</li>
+              <li class="badge bg-mint">Quatis · RJ · Brasil</li>
+              <li class="badge bg-lilac">Buscando estágio júnior</li>
+            </ul>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#projetos" class="px-btn">Ver projetos</a>
+              <a href="#contato" class="px-btn px-btn-white">Falar comigo</a>
+              <a href="https://github.com/CAMILLA668" class="px-btn px-btn-mint" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (abre em nova aba)</span></a>
+              <a href="https://github.com/CAMILLA668" class="px-btn px-btn-mint" target="_blank" rel="noopener noreferrer">Linkedin<span class="sr-only"> (abre em nova aba)</span></a>
+            </div>
+
+            <!-- Barra de carregamento retrô (decorativa) -->
+            <div class="mt-8" role="presentation">
+              <div class="mb-1 flex justify-between font-retro text-xl">
+                <span id="load-label">carregando portfólio...</span>
+                <span id="load-percent" aria-hidden="true">100%</span>
+              </div>
+              <div class="retro-bar" aria-hidden="true"><i id="load-fill"></i></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Foto + adesivo -->
+        <div class="relative mx-auto w-full max-w-xs" data-reveal="right" style="--d:150ms">
+          <article class="win" data-window>
+            <div class="win-bar win-bar-mint">
+              <span class="win-title"><span class="px-ico ico-heart-w" aria-hidden="true"></span>perfil jpeg</span>
+              <span class="win-ctrls">
+                <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela perfil.png" aria-expanded="true">_</button>
+                <button type="button" class="win-btn" data-win-close aria-label="Fechar janela perfil.png">x</button>
+              </span>
+            </div>
+            <div class="win-body !p-3">
+              <!-- Foto: assets/images/perfil.jpg. Se o arquivo ainda não existir, aparece o sprite de placeholder abaixo. -->
+              <div class="photo-frame">
+                <div class="photo-fallback" aria-hidden="true">
+                  <svg viewBox="0 0 16 14" class="h-28 w-28" shape-rendering="crispEdges">
+                    <rect x="1" y="1" width="14" height="10" fill="#3a2447" />
+                    <rect x="2" y="2" width="12" height="8" fill="#c9f5dc" />
+                    <rect x="5" y="4" width="1" height="2" fill="#3a2447" />
+                    <rect x="10" y="4" width="1" height="2" fill="#3a2447" />
+                    <rect x="3" y="6" width="2" height="1" fill="#ff5fae" />
+                    <rect x="11" y="6" width="2" height="1" fill="#ff5fae" />
+                    <rect x="5" y="7" width="1" height="1" fill="#3a2447" />
+                    <rect x="6" y="8" width="4" height="1" fill="#3a2447" />
+                    <rect x="10" y="7" width="1" height="1" fill="#3a2447" />
+                    <rect x="6" y="11" width="4" height="1" fill="#3a2447" />
+                    <rect x="4" y="12" width="8" height="1" fill="#3a2447" />
+                  </svg>
+                  <span class="mt-2 font-retro text-xl">foto em breve</span>
+                </div>
+                <img src="assets/images/perfil.png" alt="Foto de Camila Silva" width="480" height="480" loading="eager" decoding="async" class="photo-img" onerror="this.style.display='none'" />
+              </div>
+            </div>
+          </article>
+          <span class="sticker" aria-hidden="true">aberta a estágio ✦</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="px-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         SOBRE MIM
+         ============================================================ -->
+    <section id="sobre" class="mx-auto max-w-6xl px-4 py-16 sm:py-20" aria-labelledby="sobre-title">
+      <h2 id="sobre-title" class="section-title" data-reveal="up"><span class="px-ico ico-heart" aria-hidden="true"></span>Sobre mim</h2>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-[1.2fr_.8fr]">
+        <article class="win" data-window data-reveal="left">
+          <div class="win-bar win-bar-lilac">
+            <span class="win-title"><span class="px-ico ico-star-w" aria-hidden="true"></span>sobre-mim.txt</span>
+            <span class="win-ctrls">
+              <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela sobre-mim.txt" aria-expanded="true">_</button>
+              <button type="button" class="win-btn" data-win-close aria-label="Fechar janela sobre-mim.txt">x</button>
+            </span>
+          </div>
+          <div class="win-body">
+            <p class="text-base leading-relaxed sm:text-lg">
+              Sou estudante de Desenvolvimento de Sistemas na <strong>Firjan Senai Resende</strong>. Meus estudos são focados
+              principalmente em <strong>desenvolvimento web com Laravel</strong>.
+            </p>
+             <p class="mt-4 text-base leading-relaxed sm:text-lg">
+              Também possuo conhecimentos em <strong>lógica de programação, desenvolvimento de algoritmos</strong> e <strong>modelagem de dados</strong> , além de familiaridade com padrões de arquitetura de software, como <strong>MVC e MVP</strong>. No desenvolvimento com <strong>Laravel</strong>, utilizo recursos como <strong>Eloquent ORM, migrations, seeders, rotas, controllers, templates Blade</strong>  e comandos <strong>Artisan</strong> .
+            </p>
+            <p class="mt-4 text-base leading-relaxed sm:text-lg">
+              Venho do comércio, com experiência em atendimento ao público, e quero mudar de área.
+              Meu objetivo é um <strong>estágio como júnior</strong> para aprofundar minhas habilidades, colaborar com projetos reais e continuar crescendo na área.
+            </p>
+
+            <h3 class="mt-6 font-pixel text-[0.62rem] leading-loose text-pink-dark sm:text-xs">Tenho experiência em</h3>
+            <ul class="mt-2 flex flex-wrap gap-2">
+              <li class="badge bg-pink-soft">Sistemas web com design responsivo</li>
+              <li class="badge bg-mint">Planejamento de sistemas com UML</li>
+              <li class="badge bg-lilac">Banco de dados</li>
+            </ul>
+          </div>
+        </article>
+
+        <div class="grid gap-8">
+          <!-- Indicadores -->
+          <ul class="grid grid-cols-3 gap-3" aria-label="Números rápidos" data-reveal="right">
+            <li class="stat bg-pink-soft"><strong>3</strong><span>projetos</span></li>
+            <li class="stat bg-mint"><strong>2</strong><span>cursos Senai</span></li>
+            <li class="stat bg-lilac"><strong>7</strong><span>tecnologias em estudo</span></li>
+          </ul>
+
+          <!-- Janela de terminal decorativa -->
+          <article class="win" data-window data-reveal="right" style="--d:120ms">
+            <div class="win-bar win-bar-mint">
+              <span class="win-title"><span class="px-ico ico-star-w" aria-hidden="true"></span>status.log</span>
+              <span class="win-ctrls">
+                <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela status.log" aria-expanded="true">_</button>
+                <button type="button" class="win-btn" data-win-close aria-label="Fechar janela status.log">x</button>
+              </span>
+            </div>
+            <div class="win-body terminal" id="terminal">
+              <p class="t-line" data-type="$ whoami">$ whoami</p>
+              <p class="t-line t-out" data-type="camila_silva">camila_silva</p>
+              <p class="t-line" data-type="$ status">$ status</p>
+              <p class="t-line t-out" data-type="estudando desenvolvimento web">estudando desenvolvimento web</p>
+              <p class="t-line" data-type="$ objetivo">$ objetivo</p>
+              <p class="t-line t-out" data-type="estágio como júnior ♥">estágio como júnior ♥</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="px-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         TECNOLOGIAS E HABILIDADES
+         ============================================================ -->
+    <section id="tecnologias" class="mx-auto max-w-6xl px-4 py-16 sm:py-20" aria-labelledby="tec-title">
+      <h2 id="tec-title" class="section-title" data-reveal="up"><span class="px-ico ico-star" aria-hidden="true"></span>Tecnologias</h2>
+      <p class="mt-3 max-w-2xl text-base sm:text-lg" data-reveal="up">
+        Estas são as tecnologias que estou estudando e as ferramentas que uso nos meus projetos.
+      </p>
+
+      <!-- Legenda -->
+      <ul class="mt-4 flex flex-wrap gap-2" aria-label="Legenda" data-reveal="up">
+        <li class="badge bg-pink-soft"><span class="px-ico ico-heart h-3 w-3" aria-hidden="true"></span>estudando</li>
+        <li class="badge bg-mint"><span class="px-ico ico-star-green h-3 w-3" aria-hidden="true"></span>ferramenta</li>
+      </ul>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-2">
+        <article class="win" data-window data-reveal="pop">
+          <div class="win-bar">
+            <span class="win-title"><span class="px-ico ico-star-w" aria-hidden="true"></span>tecnologias.exe</span>
+            <span class="win-ctrls">
+              <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela tecnologias.exe" aria-expanded="true">_</button>
+              <button type="button" class="win-btn" data-win-close aria-label="Fechar janela tecnologias.exe">x</button>
+            </span>
+          </div>
+          <div class="win-body space-y-6">
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Linguagens</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">HTML5</li>
+                <li class="chip chip-study">CSS3</li>
+                <li class="chip chip-study">JavaScript</li>
+                <li class="chip chip-study">PHP</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Frameworks</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">Laravel</li>
+                <li class="chip chip-study">Bootstrap</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Banco de dados</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">MySQL</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Arquitetura e desenvolvimento</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">MVC</li>
+              </ul>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">MVP</li>
+              </ul>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">CRUD</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Modelagem e documentação</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">DER</li>
+              </ul>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">Migrations</li>
+              </ul>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">Seeders</li>
+              </ul>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">Diagrama de Caso de Uso</li>
+              </ul>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-study">Fluxogramas</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Ferramentas</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-tool">Git</li>
+                <li class="chip chip-tool">GitHub</li>
+                <li class="chip chip-tool">VS Code</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="win" data-window data-reveal="pop" style="--d:120ms">
+          <div class="win-bar win-bar-lilac">
+            <span class="win-title"><span class="px-ico ico-heart-w" aria-hidden="true"></span>habilidades.dat</span>
+            <span class="win-ctrls">
+              <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela habilidades.dat" aria-expanded="true">_</button>
+              <button type="button" class="win-btn" data-win-close aria-label="Fechar janela habilidades.dat">x</button>
+            </span>
+          </div>
+          <div class="win-body space-y-6">
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Habilidades técnicas</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-skill">Desenvolvimento web com HTML5, CSS3, JavaScript e PHP</li>
+                <li class="chip chip-skill">Desenvolvimento de aplicações web com Laravel</li>
+                <li class="chip chip-skill">Criação de interfaces com design responsivo</li>
+                <li class="chip chip-skill">Modelagem de bancos de dados MySQL</li>
+                <li class="chip chip-skill">Planejamento e documentação de sistemas com UML</li>
+                <li class="chip chip-skill">Controle de versão com Git e GitHub</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="folder-title"><span class="folder" aria-hidden="true"></span>Habilidades profissionais</h3>
+              <ul class="mt-3 flex flex-wrap gap-2">
+                <li class="chip chip-skill">Trabalho em equipe</li>
+                <li class="chip chip-skill">Facilidade para aprender novas ferramentas e processos</li>
+                <li class="chip chip-skill">Resolução de problemas</li>
+              </ul>
+              
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="px-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         PROJETOS (destaque do portfólio)
+         ============================================================ -->
+    <section id="projetos" class="mx-auto max-w-6xl px-4 py-16 sm:py-20" aria-labelledby="proj-title">
+      <h2 id="proj-title" class="section-title" data-reveal="up"><span class="px-ico ico-flower" aria-hidden="true"></span>Meus projetos</h2>
+      <p class="mt-3 max-w-2xl text-base sm:text-lg" data-reveal="up">
+        Uma coleção dos sistemas que desenvolvi nos meus estudos. Todos têm o código aberto no GitHub.
+      </p>
+
+      <ul class="mt-8 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+        <!-- Projeto 1 -->
+        <li data-reveal="pop">
+          <article class="cart cart-pink">
+            <div class="cart-top">
+              <span class="font-pixel text-[0.6rem]">ARQUIVO_01</span>
+              <span class="badge bg-white">Projeto em grupo</span>
+            </div>
+            <div class="cart-art" aria-hidden="true">
+              <svg viewBox="0 0 10 10" class="h-20 w-20 float" shape-rendering="crispEdges">
+                <rect x="1" y="1" width="8" height="6" fill="#3a2447" />
+                <rect x="2" y="2" width="6" height="4" fill="#fff" />
+                <rect x="3" y="3" width="1" height="1" fill="#ff5fae" />
+                <rect x="5" y="3" width="1" height="1" fill="#ff5fae" />
+                <rect x="7" y="3" width="1" height="1" fill="#ff5fae" />
+                <rect x="2" y="7" width="2" height="1" fill="#3a2447" />
+                <rect x="2" y="8" width="1" height="1" fill="#3a2447" />
+              </svg>
+            </div>
+            <div class="cart-body">
+              <h3 class="font-pixel text-sm leading-relaxed">HelpDesk</h3>
+              <p class="mt-2 text-base leading-relaxed">
+                Projeto feito em grupo nos meus estudos de Laravel: um sistema de suporte para assistência técnica.
+              </p>
+              <div class="problem">
+                <p class="font-retro text-xl text-pink-dark">&gt; problema que resolve</p>
+                <p class="text-sm leading-relaxed">
+                  Centraliza os pedidos de ajuda e reclamações para o suporte de assistência técnica em um único
+                  ambiente, melhorando a integração entre departamentos.
+                </p>
+              </div>
+              <ul class="mt-4 flex flex-wrap gap-2" aria-label="Tecnologias do projeto HelpDesk">
+                <li class="chip chip-study">Laravel</li>
+              </ul>
+            </div>
+            <div class="cart-foot">
+              <a href="https://github.com/carlosvinims/helpdesk" class="px-btn px-btn-sm" target="_blank" rel="noopener noreferrer" aria-label="Ver o projeto HelpDesk no GitHub (abre em nova aba)">Ver no GitHub ↗</a>
+            </div>
+          </article>
+        </li>
+
+        <!-- Projeto 2 -->
+        <li data-reveal="pop" style="--d:120ms">
+          <article class="cart cart-mint">
+            <div class="cart-top">
+              <span class="font-pixel text-[0.6rem]">ARQUIVO_02</span>
+              <span class="badge bg-white">Projeto de estudo</span>
+            </div>
+            <div class="cart-art" aria-hidden="true">
+              <svg viewBox="0 0 10 10" class="h-20 w-20 float" shape-rendering="crispEdges">
+                <rect x="4" y="0" width="2" height="1" fill="#3a2447" />
+                <rect x="1" y="1" width="8" height="8" fill="#3a2447" />
+                <rect x="2" y="2" width="6" height="6" fill="#c9f5dc" />
+                <rect x="3" y="3" width="2" height="2" fill="#ff5fae" />
+                <rect x="6" y="4" width="1" height="3" fill="#3ecf8e" />
+                <rect x="3" y="6" width="2" height="1" fill="#d9c8ff" />
+              </svg>
+            </div>
+            <div class="cart-body">
+              <h3 class="font-pixel text-sm leading-relaxed">Catálogo de produtos</h3>
+              <p class="mt-2 text-base leading-relaxed">
+                Catálogo de produtos e categorias com upload de imagem.
+              </p>
+            </div>
+            
+            <div class="cart-foot">
+              <a href="https://github.com/CAMILLA668/catalogo-produtos-laravel" class="px-btn px-btn-sm" target="_blank" rel="noopener noreferrer" aria-label="Ver o projeto Catálogo de produtos no GitHub (abre em nova aba)">Ver no GitHub ↗</a>
+            </div>
+          </article>
+        </li>
+
+        <!-- Projeto 3 -->
+        <li data-reveal="pop" style="--d:240ms" class="md:col-span-2 xl:col-span-1">
+          <article class="cart cart-lilac">
+            <div class="cart-top">
+              <span class="font-pixel text-[0.6rem]">ARQUIVO_03</span>
+              <span class="badge bg-white">Projeto de estudo</span>
+            </div>
+            <div class="cart-art" aria-hidden="true">
+              <svg viewBox="0 0 10 10" class="h-20 w-20 float" shape-rendering="crispEdges">
+                <rect x="0" y="1" width="10" height="8" fill="#3a2447" />
+                <rect x="1" y="2" width="2" height="6" fill="#ff5fae" />
+                <rect x="4" y="2" width="2" height="6" fill="#d9c8ff" />
+                <rect x="7" y="2" width="2" height="6" fill="#c9f5dc" />
+              </svg>
+            </div>
+            <div class="cart-body">
+              <h3 class="font-pixel text-sm leading-relaxed">Gerenciador de tarefas</h3>
+              <p class="mt-2 text-base leading-relaxed">
+                Gerenciador de tarefas semelhante ao Kanban, que permite registrar as atividades do dia a dia.
+                O usuário muda o status de cada atividade em três níveis:
+              </p>
+              <ol class="mt-4 flex flex-wrap items-center gap-2" aria-label="Níveis de status das atividades">
+                <li class="badge bg-pink-soft">a fazer</li>
+                <li aria-hidden="true">→</li>
+                <li class="badge bg-lilac">em andamento</li>
+                <li aria-hidden="true">→</li>
+                <li class="badge bg-mint">feito</li>
+              </ol>
+            </div>
+            <div class="cart-foot">
+              <a href="https://github.com/CAMILLA668/gerenciador-de-tarefas" class="px-btn px-btn-sm" target="_blank" rel="noopener noreferrer" aria-label="Ver o projeto Gerenciador de tarefas no GitHub (abre em nova aba)">Ver no GitHub ↗</a>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <div class="px-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         EXPERIÊNCIA PROFISSIONAL + FORMAÇÃO
+         ============================================================ -->
+    <section class="mx-auto max-w-6xl px-4 py-16 sm:py-20" aria-labelledby="trajetoria-title">
+      <h2 id="trajetoria-title" class="section-title" data-reveal="up"><span class="px-ico ico-star" aria-hidden="true"></span>Minha trajetória</h2>
+
+      <div class="mt-8 grid gap-8 lg:grid-cols-2">
+
+        <!-- Experiência -->
+        <article id="experiencia" class="win" data-window data-reveal="left">
+          <div class="win-bar win-bar-mint">
+            <span class="win-title"><span class="px-ico ico-star-w" aria-hidden="true"></span>experiencia.log</span>
+            <span class="win-ctrls">
+              <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela experiencia.log" aria-expanded="true">_</button>
+              <button type="button" class="win-btn" data-win-close aria-label="Fechar janela experiencia.log">x</button>
+            </span>
+          </div>
+          <div class="win-body">
+            <h3 class="font-pixel text-xs leading-loose text-pink-dark">Experiência no comércio</h3>
+            <p class="mt-2 text-base">Atendimento ao público: a base da minha comunicação antes de migrar para a tecnologia.</p>
+
+            <ol class="timeline mt-6">
+              <li>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-card">
+                  <h4 class="font-pixel text-[0.7rem] leading-relaxed">Atendente</h4>
+                  <p class="font-semibold">Café da Ana</p>
+                  <p class="font-retro text-xl text-lilac-dark">1 ano e meio</p>
+                  <ul class="mt-2 flex flex-wrap gap-2" aria-label="Atividades">
+                    <li class="badge bg-pink-soft">Atendimento ao cliente</li>
+                    <li class="badge bg-mint">Garçonete</li>
+                    <li class="badge bg-lilac">Caixa</li>
+                    <li class="badge bg-pink-soft">Preparação de alimentos</li>
+                    <li class="badge bg-mint">Limpeza do ambiente</li>
+                  </ul>
+                </div>
+              </li>
+              <li>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-card">
+                  <h4 class="font-pixel text-[0.7rem] leading-relaxed">Atendente</h4>
+                  <p class="font-semibold">Padaria Bom Sabor</p>
+                  <p class="font-retro text-xl text-lilac-dark">5 meses</p>
+                  <ul class="mt-2 flex flex-wrap gap-2" aria-label="Atividades">
+                    <li class="badge bg-pink-soft">Atendimento ao cliente</li>
+                    <li class="badge bg-mint">Limpeza do ambiente</li>
+                  </ul>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- Formação -->
+        <article id="formacao" class="win" data-window data-reveal="right" style="--d:120ms">
+          <div class="win-bar win-bar-lilac">
+            <span class="win-title"><span class="px-ico ico-heart-w" aria-hidden="true"></span>formacao.sys</span>
+            <span class="win-ctrls">
+              <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela formacao.sys" aria-expanded="true">_</button>
+              <button type="button" class="win-btn" data-win-close aria-label="Fechar janela formacao.sys">x</button>
+            </span>
+          </div>
+          <div class="win-body">
+            <h3 class="font-pixel text-xs leading-loose text-pink-dark">Formação</h3>
+            <p class="mt-2 text-base">Cursos feitos na Firjan Senai.</p>
+
+            <ol class="timeline mt-6">
+              <li>
+                <span class="tl-dot tl-dot-pink" aria-hidden="true"></span>
+                <div class="tl-card">
+                  <h4 class="font-pixel text-[0.7rem] leading-relaxed">Técnico em Desenvolvimento de Sistemas</h4>
+                  <p class="font-semibold">Firjan Senai</p>
+                  <p class="font-retro text-xl text-lilac-dark">2026/2027</p>
+                  <p class="mt-2"><span class="badge bg-pink-soft">Em andamento</span></p>
+                  <div class="retro-bar retro-bar-moving mt-3" aria-hidden="true"><i></i></div>
+                </div>
+              </li>
+              <li>
+                <span class="tl-dot" aria-hidden="true"></span>
+                <div class="tl-card">
+                  <h4 class="font-pixel text-[0.7rem] leading-relaxed">Assistente de Controle de Qualidade</h4>
+                  <p class="font-semibold">Firjan Senai</p>
+                  <p class="font-retro text-xl text-lilac-dark">2025/2026</p>
+                  <p class="mt-2"><span class="badge bg-mint">Concluído</span></p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="px-divider" aria-hidden="true"></div>
+
+    <!-- ============================================================
+         CONTATO
+         ============================================================ -->
+    <section id="contato" class="mx-auto max-w-4xl px-4 py-16 sm:py-20" aria-labelledby="contato-title">
+      <h2 id="contato-title" class="section-title" data-reveal="up"><span class="px-ico ico-heart" aria-hidden="true"></span>Contato</h2>
+
+      <article class="win mt-8" data-window data-reveal="pop">
+        <div class="win-bar">
+          <span class="win-title"><span class="px-ico ico-star-w" aria-hidden="true"></span>nova-mensagem.exe</span>
+          <span class="win-ctrls">
+            <button type="button" class="win-btn" data-win-min aria-label="Minimizar janela nova-mensagem.exe" aria-expanded="true">_</button>
+            <button type="button" class="win-btn" data-win-close aria-label="Fechar janela nova-mensagem.exe">x</button>
+          </span>
+        </div>
+        <div class="win-body text-center">
+          <p class="font-pixel text-sm leading-[1.9] sm:text-lg">Vamos conversar?</p>
+          <p class="mx-auto mt-3 max-w-xl text-base leading-relaxed sm:text-lg">
+            Estou em busca de uma oportunidade de estágio como júnior em desenvolvimento web.
+            Me chame por e-mail ou dê uma olhadinha no meu GitHub!
+          </p>
+
+          <p class="mx-auto mt-5 inline-block max-w-full break-all border-[3px] border-ink bg-mint px-3 py-2 font-retro text-xl sm:text-2xl">
+            camilavitoria.prof@gmail.com
+          </p>
+
+          <div class="mt-6 flex flex-wrap justify-center gap-3">
+            <a href="mailto:camilavitoria.prof@gmail.com" class="px-btn">Enviar e-mail</a>
+            <button type="button" id="copy-email" class="px-btn px-btn-white" data-email="camilavitoria.prof@gmail.com">Copiar e-mail</button>
+            <a href="https://github.com/CAMILLA668" class="px-btn px-btn-mint" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (abre em nova aba)</span></a>
+          </div>
+          <p id="copy-status" class="mt-3 min-h-[1.75rem] font-retro text-xl text-mint-dark" role="status" aria-live="polite"></p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="relative z-10 border-t-[3px] border-ink bg-pink-soft">
+    <div class="px-divider" aria-hidden="true"></div>
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-4 py-6 text-center sm:flex-row sm:text-left">
+      <p class="font-retro text-xl">
+        <span class="px-ico ico-heart inline-block h-3 w-3" aria-hidden="true"></span>
+        © <span id="year">2026</span> Camila Silva · Quatis, RJ
+      </p>
+      <p class="font-retro text-xl">feito com HTML, Tailwind CSS e muito rosa ✿</p>
+    </div>
+  </footer>
+
+  <!-- Botão voltar ao topo -->
+  <button id="back-to-top" type="button" class="px-btn back-top" aria-label="Voltar ao topo da página" hidden>▲</button>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
